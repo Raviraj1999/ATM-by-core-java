@@ -1,0 +1,86 @@
+
+package com;
+
+public interface bank {
+	void deposit(int amount);
+	void withdraw(int amount);
+	void checkbalance();
+	
+	}
+
+======================================================
+
+package com;
+
+public class ATM implements bank {
+	
+	public int balance=10000;
+	
+	@override
+	public void deposit(int amount)
+	{
+	    System.out.println("depositing Rs."+ amount);
+	    balance=balance+amount;
+	    System.out.println("Amount deposited successfully and available balance is:"+balance);
+	}
+	@override
+	public void withdraw(int amount)
+	{
+		System.out.println("withdrawing Rs."+ amount);
+		balance=balance-amount;
+		System.out.println("Amount withdrawn successfully and available balance is:"+balance);
+	}
+	@override
+	public void checkbalance()
+	{
+		System.out.println("avaliable balance: Rs."+balance);
+	}
+
+}
+
+=====================================================================================================================
+
+
+package com;
+
+import java.util.Scanner;
+
+public class solutions {
+	public static void main(String[] args) {
+		System.out.println("WELCOME TO ATM");
+		System.out.println("---------------------");
+		Scanner s=new Scanner(System.in);
+		bank b = new ATM();
+		while(true)
+		{
+			System.out.println("1:Deposit\n2:Withdraw\n3:Check Balance\n4:Exit");
+			System.out.println("Enter Choice");
+			int choice = s.nextInt();
+			
+			switch(choice)
+			{
+			case 1:
+				System.out.println("Enter amount to be deposited");
+				int dAmt=s.nextInt();
+				b.deposit(dAmt);
+				break;
+			case 2:
+				System.out.println("Enter amount to be withdrawn");
+				int wAmt=s.nextInt();
+				b.withdraw(wAmt);
+				break;
+			case 3:
+				b.checkbalance();
+				break;
+			case 4:
+				System.out.println("thank you");
+				System.exit(0);
+			default:
+				System.out.println("Invalid choice");
+				
+			}
+			System.out.println("--------------------------");
+		}
+	}
+
+}
